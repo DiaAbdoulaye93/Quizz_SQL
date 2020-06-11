@@ -1,5 +1,18 @@
+<?php
+is_connect();
+?>
 <body>
-    <nav class="navbar navbar-default title1">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
+		<script src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
+		<script src="https://cdn.datatables.net/1.10.12/js/dataTables.bootstrap.min.js"></script>		
+		<link rel="stylesheet" href="https://cdn.datatables.net/1.10.12/css/dataTables.bootstrap.min.css" />
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="./public/bootstrap/bootstrap.min.css">
+
+<link rel="stylesheet" href="./public/css/form.css">
+<link rel="stylesheet" href="./public/js/bootstrap.min.css">
+    <nav class="navbar navbar-default title1" id="nav">
         <div class="container-fluid">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" >
@@ -13,44 +26,24 @@
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-left" >
                    
-                    <li class="active"><a href="index.php?lien=accueil&lien1=inscription1">Creer admin</a></li>
-                    <li class="active"><a href="">Liste joueurs</a></li>
+                    <li class="active"><a class="nav-link active" lien="index.php?action=admin&page=addAdmin" href="#" id="add_admin">Creer admin</a></li>
+                    <li class="active"><a  class="nav-link active" lien="index.php?action=admin&page=showJoueur" href="#"  id="player_liste">Liste joueurs</a></li>
          
-                    <li><a href="">Créer questions</a></li>
-                     <li class="active"><a href="">Liste questions</a></li>
-                    <li><a href="">Statistiques du jeu</a></li>
+                    <li><a class="nav-link active" lien="index.php?action=admin&page=addQuestion" href="#"  >Créer questions</a></li>
+                     <li class="active"><a class="nav-link active" lien="index.php?action=admin&page=showQuestion" href="#">Liste questions</a></li>
+                    <li><a href="#">Statistiques du jeu</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
-                    <li <?php echo''; ?> > <a href="index.php?statut=logout"><span class="" ></span>&nbsp;Déconnexion</a></li>
+                    <li > <a href="index.php?statut=logout"><span class="" ></span>&nbsp;Déconnexion</a></li>
                 </ul>
             </div>
         </div>
     </nav>
-    <?php 
-    
-    if(isset($_GET['lien1']))
-    {
-        switch($_GET['lien1'])
-        {
-            case "questions":
-           require_once("affichage_questions.php");
-            break;
-            case "joueurs":
-            require_once("pages/joueurs.php");
-            break;
-            case "inscription1":
-            require_once("pages/inscription.php");
-            break;
-            case "creer_questions":
-            require_once("pages/creation_questions.php");
-            break;
-            
-        }
-    }
-    else{
-        include("pages/inscription.php");
-  
-    }
+    <div id="container-admin">
+    <?php  include('./pages/inscription.php'); ?>
+    </div>
+     
    
-             ?>
+ 
+   
     </body>

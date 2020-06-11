@@ -22,12 +22,15 @@ font-family: 'Open Sans';
 font-weight: bold
   }
   #entete{
-    background-color:rgb(6, 21, 22); 
+    /* background-color:rgb(6, 21, 22);  */
    padding-top: 2%;
     height:120px;
     margin-top:-2%;
     margin-left:0px;
     width: 100%
+}
+.error-form{
+  color:red;
 }
 #text-entete{
   margin-left:40%;
@@ -112,7 +115,15 @@ font-weight: bold
   .btn i {
     margin-right: 5px;
   }
-  
+  .img{
+    border-radius: 50%;
+    margin-top:-5%;
+    margin-left:10%;
+    width:50%;
+    height:30%
+    
+  }
+   
   .btn-social {
     font-weight: 400;
     padding-left: 25px;

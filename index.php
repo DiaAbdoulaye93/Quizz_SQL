@@ -1,65 +1,66 @@
-<?php 
-require('traitements/config.php');
-require('traitements/fonctions.php');
-	session_start();
-	if(isset($_SESSION["pseudo"]))
-	{
-		session_destroy();
-    }
-    ?>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=div, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Quizz</title>
-    <link rel="stylesheet" href="public/bootstrap/bootstrap.min.css">
-	
-    <!-- <link rel="stylesheet" href="style/style.css"> -->
-    <link rel="stylesheet" href="public/css/form.css">
-</head>
-<body>
-<div class="content" style="">
-  <div id="entete">
-       <img src="public/images/logo-QuizzSA.png" alt="" style="margin-left: width:10%; height:100px">
-       <h1 id="text-entete">Le plaisir de jouer</h1> 
+<?php
+ define("WEBROOT","http://localhost/jqueryquizz");
+   define("ACTION","action");
+   require_once("./traitements/traitement.php");
+   require_once("./traitements/function.php");
+  require_once("./data/bd.php");
+  include('./data/db.php');
+if(isset($_GET["action"]))
+{
 
-   </div> 
-  
-    <?php 
-    //require_once("fonctions/fonctions.php");
-    if(isset($_GET['lien']))
+
+    if($_GET[ACTION]=='connexion')
     {
-        switch($_GET['lien'])
-        {
-            case "accueil":
-            require_once("pages/interface_admin.php");
-            
-            break;
-            case "jeux":
-            require_once("pages/joueur.php");
-            break;
-            
-            case "inscription":
-            require_once("pages/inscription.php");
-            break;
-            default:
-            require_once("pages/connection.php");
-        }
+          //Traitement de connexion
+          pageConnexion($_POST);
     }
-    else{
-        if(isset($_GET['statut']) && $_GET['statut']=="logout")
-        {
-            deconnexion();
-            header("location:index.php");
+    else if($_GET["action"]=='inscription')
+    {
+        //Vue Incription Joueur
+        require_once './pages/inscription.php';
+    }elseif($_GET["action"]=="admin"){
+        //Appel des Vues Admin
+        //Avant d'appeler une vue admin on verifie 
+        //que l'amin est connecté
+        if(is_connect()){
+            //Appel des Pages Admin
+            if(isset($_GET["page"])){
+              
+                if($_GET["page"]=="showJoueur"){
+                    //Chargement de la liste des Joueurs
+                    require_once './pages/Liste_joueurs.php';
+                }elseif($_GET["page"]=="addQuestion"){
+                    //Chargement de la Vue qui permet d'ajouter des Questions
+                    require_once './pages/questions.php';
+            }elseif($_GET["page"]=="addAdmin"){
+                //Chargement de la Vue qui permet d'ajouter des Questions
+                require_once './pages/inscription.php';
+            }
+                
+            }else{
+                //Vue Admin charger par défaut
+                require_once './pages/interface_admin.php';
+            }
+        }else{
+            //Page de Connexion
+            require_once './pages/layout.php'; 
         }
-        require_once("pages/connection.php");
+        
+    }elseif($_GET[ACTION]=="joueur"){
+        if(is_connect()){
+            require_once './pages/joueur/joueur.php';
+        }
+      
+  } elseif($_GET["action"]=="deconnexion"){
+          //Traitement de Deconnexion
+           deconnection();
     }
-     
-    ?>
-    </div>
-    <script src="public/js/jquery.js"></script>
-		<script src="public/bootstrap/bootstrap.min.js"></script>
-</body>
-</html>
+}
+else
+{
+
+        require_once './pages/layout.php';
+}
+
+
+?> 

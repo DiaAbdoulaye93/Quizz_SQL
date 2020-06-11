@@ -1,3 +1,4 @@
+ 
 <!DOCTYPE html>
 <html>
 	<head>
@@ -5,21 +6,24 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<meta http-equiv="X-UA-Compatible" content="ie=edge">
 		<title>Inscription</title>
-		<link rel="stylesheet" href="../public/bootstrap/bootstrap.min.css">
 	 
-		<link rel="stylesheet" href="../public/css/form.css">
-        <style type="text/css">
-            body{
-                  width: 100%;
-                  background-image: linear-gradient(skyblue,pink);
-                  background-position: center center;
-                  background-repeat: no-repeat;
-                  background-attachment: fixed;
-                  background-size: cover;
-                }
-          </style>
+       
 	</head>
-
+	<script>
+    function previewImage(event)
+    {
+        var reader=new FileReader();
+        var imageField=document.getElementById("im")
+        reader.onload=function()
+        {
+            if(reader.readyState==2)
+            {
+                imageField.src=reader.result;
+            }
+        }
+        reader.readAsDataURL(event.target.files[0]);
+    }
+</script>
 	<body>
 		<section class="login first grey">
 			<div class="container">
@@ -27,54 +31,63 @@
 					<div class="box box-border">
 						<div class="box-body">
                         <center> <h5 style="font-family: Noto Sans; font-weight:bold">Insciption </h5> </center><br>
-							<form method="post" action="register.php" enctype="multipart/form-data">
+							<form method="post"   id="formulaire_inscription" enctype="multipart/form-data">
                                 <div class="form-group">
                                  
-                                    <div id="prev">
-                                       <img  alt="" src="img/avatar/avatar.jpg"  id="im" > 
+                                   
+                                       <img  alt="" src="public/images/avatar/avatar.jpg" id="im" class="img" > 
                                        <h3>
                                         <?php
       
-                                                if(!isset($_SESSION['statut']))
+                                                if(!isset($_SESSION['userConnect']))
                                                    {
+												 
                                                      echo'<span style="color:black;margin-left:15%">Avatar du Joueur</span>';
                                                    }
                                                 else
                                                    {
+													   
                                                        echo'<span style="color:black;margin-left:10%">Avatar du Admin</span> ';
                                                    }
 
                                         ?>
                                        </h3>    
-                                       </div>    </div>
+                                       </div>
                                    <div class="form-group">
 
 									<label>Nom</label>
-									<input type="text" name="name" class="form-control"   placeholder="Dia" />
+									<input type="text" name="nom" class="form-control"     />
+								    
 								</div>
 								<div class="form-group">
 									<label>Prénom</label>
-									<input type="prenom" name="prenom" class="form-control" placeholder="Abdoulaye"  />
+									<input type="prenom" name="prenom" class="form-control" error="error-2" placeholder="Abdoulaye"     />
+									 <span class="error-form" id="error-2"></span>
+		                              <!-- <span style='color:red'><?php  //echo $message ?></span> -->
                                 </div>
                                 <div class="form-group">
 									<label>Pseudo</label>
-									<input type="pseudo" name="pseudo" class="form-control"  placeholder="Lazy890"/>
+									<input type="pseudo" name="pseudo" class="form-control" error="error-3" placeholder="Lazy890" />
+								 
 								</div>
 								<div class="form-group">
 									<label>Mot de passe</label>
-									<input type="password" name="password" class="form-control" placeholder="••••••••••••"  />
+									<input type="password" name="password" id="password" class="form-control" error="error-4" placeholder="••••••••••••"   />
+								    
                                 </div>
 								<div class="form-group">
 									<label>Confirmer mot de passe</label>
-									<input type="password" name="passwordconfirm" class="form-control"  placeholder="••••••••••••" />
+									<input type="password" name="passwordconfirm" id="passwordconfirm" class="form-control"  error="error-7" placeholder="••••••••••••"   />
+								  
                                 </div>
                                 <div class="form-group">
 									<label>Avatar</label>
-									<input type="file" name="photo" class="form-control" value="Choisir un fichier"  />
+									<input type="file" name="user_image" id="user_image"   onchange="previewImage(event)" />
+					<span id="user_uploaded_image"></span>
 								</div>
-                                
+								 
 								<div class="form-group text-right">
-									<button class="btn btn-primary btn-block" name="submit">CREER VOTRE COMPTE</button>
+									<input type="submit" class="btn btn-primary btn-block" name="enregistrer" id="enregistrer" value="CREER VOTRE COMPTE"/>
 								</div>
 							 
 							</form>
@@ -83,8 +96,7 @@
 				</div>
 			</div>
 		</section>
-
-		<script src="../public/js/jquery.js"></script>
-		<script src="../public/bootstrap/bootstrap.min.js"></script>
+	 
 	</body>
+	<script src="./public/js/scripte.js"></script>
 </html>
