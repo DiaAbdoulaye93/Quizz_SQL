@@ -15,25 +15,25 @@ function pageConnexion($post)
          $_SESSION['userConnect']=$result;
         
          if($result['type']=="superadmin" || $result['type']=="admin" ){
-          
-             require_once "./pages/interface_admin.php";
+          echo "admin";
+            //  require_once "./pages/interface_admin.php";
          }
          else{
           if($result['actif']==1)
           {
-            return "joueur";
+            echo "joueur";
           }
-          echo "<script> alert ('Votre statut actuel ne vous permet pas dacceder a la plateforme SENQUIZZ SA   Veuillez contacter le web Master a l addresse suivante diaabdoulayedjibril@gmail.com')</script>";
-          require_once './pages/layout.php';
+        //   echo "<script> alert ('Votre statut actuel ne vous permet pas dacceder a la plateforme SENQUIZZ SA   Veuillez contacter le web Master a l addresse suivante diaabdoulayedjibril@gmail.com')</script>";
+        //   require_once './pages/layout.php';
          }
      }else{
-          echo "<script> alert ('log ou pass incorrect')</script>";
-          require_once './pages/layout.php';
+         echo "error";
+        //   echo "<script> alert ('log ou pass incorrect')</script>";
+        //   require_once './pages/layout.php';
      }
 
  }
-
- function deconnection(){
+function deconnection(){
     //Destruction des données utlisateur
     session_destroy();
     unset( $_SESSION['userConnect']);
@@ -47,6 +47,5 @@ function pageConnexion($post)
         return false;
      }
  }
-      
        
 ?>

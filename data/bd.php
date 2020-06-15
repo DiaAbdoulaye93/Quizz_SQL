@@ -28,7 +28,7 @@ function getUserConnexion($login,$password){
        if($query->rowCount() > 0){
         
          $user = $query -> fetch(PDO::FETCH_ASSOC);
-         $profil = $user['type'];    
+        //  $profil = $user['type'];    
          return $user;
     }
     else{

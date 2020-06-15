@@ -7,7 +7,7 @@ if(isset($_POST["user_id"]))
 	$output = array();
 	$statement = $connection->prepare(
 		"SELECT * FROM utilisateur 
-		WHERE id = '".$_POST["user_id"]."' 
+		WHERE id = '".$_POST["user_id"]."' AND type ='joueur'
 		LIMIT 1"
 	);
 	$statement->execute();

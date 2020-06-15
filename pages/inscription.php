@@ -35,7 +35,7 @@
                                 <div class="form-group">
                                  
                                    
-                                       <img  alt="" src="public/images/avatar/avatar.jpg" id="im" class="img" > 
+                                       <img  alt="" src="./public/images/avatar/avatar.jpg" id="im" class="img" > 
                                        <h3>
                                         <?php
       
@@ -98,5 +98,5 @@
 		</section>
 	 
 	</body>
-	<script src="./public/js/scripte.js"></script>
+	 
 </html>

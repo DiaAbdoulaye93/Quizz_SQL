@@ -26,7 +26,7 @@
 					</thead>
 					<tbody>
 					
-					</tbody id="show_data">
+					</tbody>
 				</table>
 				
 			</div>
@@ -78,11 +78,11 @@
 				<div class="modal-footer">
 					<input type="hidden" name="user_id" id="user_id" />
 					<input type="hidden" name="operation" id="operation" />
-					<input type="submit" name="action" id="action" class="btn btn-success" value="Add" />
+					<input type="submit" name="action" id="actione" class="btn btn-success" value="Modifier" />
 					<button type="button" class="btn btn-default" data-dismiss="modal">Annuler</button>
 				</div>
 			</div>
 		</form>
 	</div>
 </div>
-<script src="./public/js/scripte.js"></script>
+<script src="./public/js/scripte.js" ></script>

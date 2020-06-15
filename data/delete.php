@@ -1,4 +1,5 @@
-<?php
+
+<script> alert("ok");</script><?php
 include('db.php');
 include('../traitements/function.php');
 
@@ -7,7 +8,7 @@ if(isset($_POST["user_id"]))
 	$image = get_image_name($_POST["user_id"]);
 	if($image != '')
 	{
-		unlink("../publics/upload/" . $image);
+		unlink("../public/images/avatar/" . $image);
 	}
 	$statement = $connection->prepare(
 		"DELETE FROM utilisateur WHERE id = :id"

@@ -14,7 +14,7 @@ function upload_image()
 
 function get_image_name($user_id)
 {
-	include('./data/db.php');
+	include('../data/db.php');
 	$statement = $connection->prepare("SELECT image FROM utilisateur WHERE id = '$user_id'");
 	$statement->execute();
 	$result = $statement->fetchAll();
@@ -27,7 +27,15 @@ function get_image_name($user_id)
 function get_total_all_records()
 {
 	include('../data/db.php');
-	$statement = $connection->prepare("SELECT * FROM utilisateur");
+	$statement = $connection->prepare("SELECT * FROM utilisateur where type LIKE '%joueur%' ");
+	$statement->execute();
+	$result = $statement->fetchAll();
+	return $statement->rowCount();
+}
+function get_questions()
+{
+	include('../data/db.php');
+	$statement = $connection->prepare("SELECT * FROM question");
 	$statement->execute();
 	$result = $statement->fetchAll();
 	return $statement->rowCount();
